@@ -1,0 +1,249 @@
+:root {
+  /* Palette — dark dev-tool aesthetic */
+  --bg: #0a0a0b;
+  --bg-elev: #111114;
+  --bg-elev-2: #17171b;
+  --surface: #131317;
+  --border: #26262c;
+  --border-soft: #1d1d22;
+  --text: #ededf0;
+  --text-dim: #a1a1aa;
+  --text-faint: #6b6b74;
+
+  /* Accent — teal/emerald signal color */
+  --accent: #2dd4a7;
+  --accent-hover: #34e0b3;
+  --accent-dim: rgba(45, 212, 167, 0.12);
+  --accent-glow: rgba(45, 212, 167, 0.35);
+
+  /* Terminal chrome dots */
+  --dot-red: #ff5f57;
+  --dot-yellow: #febc2e;
+  --dot-green: #28c840;
+
+  /* Syntax */
+  --syn-key: #7cc5ff;
+  --syn-str: #8ee6a0;
+  --syn-punct: #6b6b74;
+  --syn-num: #f0a879;
+  --syn-comment: #5c5c66;
+
+  --radius: 12px;
+  --radius-sm: 8px;
+  --maxw: 1120px;
+
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+    Arial, 'Apple Color Emoji', 'Segoe UI Emoji', sans-serif;
+  --font-mono: 'SFMono-Regular', ui-monospace, 'Menlo', 'Consolas',
+    'Liberation Mono', monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  font-weight: 650;
+}
+
+p {
+  margin: 0;
+}
+
+code,
+pre {
+  font-family: var(--font-mono);
+  font-variant-ligatures: none;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section {
+  padding: 96px 0;
+  position: relative;
+}
+
+.section--tight {
+  padding: 72px 0;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-size: clamp(1.7rem, 3.4vw, 2.5rem);
+  max-width: 640px;
+}
+
+.section-lede {
+  color: var(--text-dim);
+  font-size: 1.05rem;
+  max-width: 620px;
+  margin-top: 16px;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 20px;
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  font-weight: 550;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease,
+    color 0.18s ease;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn--primary {
+  background: var(--accent);
+  color: #04140f;
+  box-shadow: 0 0 0 1px var(--accent), 0 8px 30px -12px var(--accent-glow);
+}
+
+.btn--primary:hover {
+  background: var(--accent-hover);
+}
+
+.btn--ghost {
+  background: var(--bg-elev);
+  border-color: var(--border);
+  color: var(--text);
+}
+
+.btn--ghost:hover {
+  border-color: #3a3a44;
+  background: var(--bg-elev-2);
+}
+
+/* Terminal / code window chrome */
+.window {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 24px 60px -30px rgba(0, 0, 0, 0.8);
+}
+
+.window__bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 14px;
+  background: var(--bg-elev);
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.window__dots {
+  display: flex;
+  gap: 7px;
+}
+
+.window__dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.window__title {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-faint);
+  margin-left: 6px;
+}
+
+.window__body {
+  padding: 20px 22px;
+  overflow-x: auto;
+}
+
+.code {
+  font-family: var(--font-mono);
+  font-size: 13.5px;
+  line-height: 1.75;
+  white-space: pre;
+  margin: 0;
+  color: var(--text);
+}
+
+.tok-key {
+  color: var(--syn-key);
+}
+.tok-str {
+  color: var(--syn-str);
+}
+.tok-punct {
+  color: var(--syn-punct);
+}
+.tok-num {
+  color: var(--syn-num);
+}
+.tok-comment {
+  color: var(--syn-comment);
+  font-style: italic;
+}
+.tok-prompt {
+  color: var(--accent);
+}
+.tok-cmd {
+  color: var(--text);
+}
+.tok-out {
+  color: var(--text-dim);
+}
+.tok-ok {
+  color: var(--dot-green);
+}
+
+@media (max-width: 720px) {
+  .section {
+    padding: 64px 0;
+  }
+  .code {
+    font-size: 12.5px;
+  }
+}
