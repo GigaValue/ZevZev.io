@@ -1,7 +1,9 @@
 import { LOCALE_STORAGE_KEY, type Locale } from '~/composables/useLocale'
 
-// Runs on the client during hydration: pick up a persisted choice, otherwise
-// follow navigator.language, falling back to English.
+// Runs on the client during hydration: honor a persisted choice, otherwise
+// default to English. This is the international open-source site, so English is
+// the default regardless of browser language; visitors can switch to 中文 and
+// that choice is remembered.
 export default defineNuxtPlugin(() => {
   const { locale } = useLocale()
 
@@ -17,6 +19,5 @@ export default defineNuxtPlugin(() => {
     return
   }
 
-  const nav = (navigator.language || '').toLowerCase()
-  locale.value = nav.startsWith('zh') ? 'zh' : 'en'
+  locale.value = 'en'
 })
